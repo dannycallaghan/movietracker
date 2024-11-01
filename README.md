@@ -14,7 +14,7 @@ Please do so by using best practices in React and JavaScript.
 
 4. Can complete the "viewed / move total" info at the top? It's not working.
 
-5. 5. Please add the table sorting to the year and runtime columns.
+5. Please add the table sorting to the year and runtime columns.
 
 6. Please add the table sorting to the title and director columns.
    
