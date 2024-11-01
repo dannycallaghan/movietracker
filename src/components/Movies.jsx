@@ -1,6 +1,6 @@
 import MovieTable from './MovieTable.jsx';
 import MovieSearch from './MovieSearch.jsx';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function formatMoviesJSON(movies) {
 	return movies.map((movie) => {
@@ -12,7 +12,7 @@ function formatMoviesJSON(movies) {
 }
 
 export default function Movies({ movies }) {
-	const [data, setData] = useState(() => formatMoviesJSON(movies));
+	const [data, setData] = useState(movies);
 
 	const handleViewed = (e, id) => {
 		setData((prev) =>
@@ -33,13 +33,46 @@ export default function Movies({ movies }) {
 		return viewed.length;
 	};
 
+	const sortAsc = useRef(true);
+
+	const handleSort = (sort) => {
+		setData((prev) => {
+			const result = prev;
+			if (sort === 'year') {
+				if (sortAsc.current) {
+					result.sort((a, b) => Number(a.year) - Number(b.year));
+				} else {
+					result.sort((a, b) => Number(b.year - a.year));
+				}
+				sortAsc.current = !sortAsc.current;
+			}
+			if (sort === 'runtime') {
+				if (sortAsc.current) {
+					result.sort((a, b) => Number(a.runtime) - Number(b.runtime));
+				} else {
+					result.sort((a, b) => Number(b.runtime - a.runtime));
+				}
+				sortAsc.current = !sortAsc.current;
+			}
+			return [...result];
+		});
+	};
+
+	useEffect(() => {
+		console.log('data changed');
+	}, [data]);
+
 	return (
 		<>
 			<p className="w-1/2 text-gray-500">
 				Of {data.length} movies, you've see {getViewed()}.
 			</p>
 			<MovieSearch />
-			<MovieTable movies={data} handleViewed={handleViewed} />
+			<MovieTable
+				movies={data}
+				handleViewed={handleViewed}
+				handleSort={handleSort}
+			/>
 		</>
 	);
 }
