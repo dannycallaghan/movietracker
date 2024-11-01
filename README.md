@@ -21,7 +21,7 @@ Please do so by using best practices in React and JavaScript.
 7. If you have time, please add a delete button to each row, that deletes the film from the JSON (so we can persist it later), incase some films are removed from the syllabus.
 
 8. Can you make the columns dynamic? Read them from the data? In case the API changes? It would be nice if, should the backend guy add another field, the table just picks it up.
-9. 
+
 Thanks!
 
 
