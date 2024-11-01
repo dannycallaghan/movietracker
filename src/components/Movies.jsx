@@ -28,11 +28,15 @@ export default function Movies({ movies }) {
 		);
 	};
 
+	const getViewed = () => {
+		const viewed = data.filter((movie) => movie.viewed === true);
+		return viewed.length;
+	};
+
 	return (
 		<>
-			<pre>{JSON.stringify(data, null, 2)}</pre>
 			<p className="w-1/2 text-gray-500">
-				Of {data.length} movies, you've see XXX.
+				Of {data.length} movies, you've see {getViewed()}.
 			</p>
 			<MovieSearch />
 			<MovieTable movies={data} handleViewed={handleViewed} />
