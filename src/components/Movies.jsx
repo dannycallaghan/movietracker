@@ -5,15 +5,15 @@ import { useEffect, useRef, useState } from 'react';
 function formatMoviesJSON(movies) {
 	return movies.map((movie) => {
 		return {
-			...movie,
 			viewed: false,
+			...movie,
 		};
 	});
 }
 
 export default function Movies({ movies }) {
-	const [data, setData] = useState(movies);
-	const [filteredData, setFilteredData] = useState(movies);
+	const [data, setData] = useState(formatMoviesJSON(movies));
+	const [filteredData, setFilteredData] = useState(formatMoviesJSON(movies));
 
 	const handleViewed = (e, id) => {
 		setFilteredData((prev) =>
