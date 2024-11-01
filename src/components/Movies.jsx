@@ -30,7 +30,6 @@ export default function Movies({ movies }) {
 
 	return (
 		<>
-			<pre>{JSON.stringify(data, null, 2)}</pre>
 			<p className="w-1/2 text-gray-500">
 				Of {data.length} movies, you've see XXX.
 			</p>
