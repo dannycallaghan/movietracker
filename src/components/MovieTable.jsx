@@ -29,7 +29,6 @@ export default function MovieTable({ movies }) {
 						</th>
 						<th className="px-6 py-3">Actors</th>
 						<th className="px-6 py-3">Plot</th>
-						<th className="px-6 py-3">Poster</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -50,9 +49,6 @@ export default function MovieTable({ movies }) {
 							<td className="px-6 py-4">{movie.director}</td>
 							<td className="px-6 py-4"></td>
 							<td className="px-6 py-4">{movie.plot}</td>
-							<td className="px-6 py-4">
-								<img src={movie.posterUrl} width="50" alt={movie.title} />
-							</td>
 						</tr>
 					))}
 				</tbody>
