@@ -3,7 +3,7 @@ import { TbArrowsSort } from 'react-icons/tb';
 export default function MovieTable({ movies }) {
 	return (
 		<div className="relative overflow-x-auto">
-			<table className="w-full text-left text-sm text-gray-500 rtl:text-right">
+			<table className="w-full table-fixed text-left text-sm text-gray-500 rtl:text-right">
 				<thead className="bg-gray-50 text-xs uppercase text-gray-700">
 					<tr>
 						<th className="px-6 py-3">
@@ -45,10 +45,10 @@ export default function MovieTable({ movies }) {
 							</th>
 							<td className="px-6 py-4">{movie.year}</td>
 							<td className="px-6 py-4">{movie.runtime}</td>
-							<td className="px-6 py-4"></td>
+							<td className="w-[50px] truncate px-6 py-4"></td>
 							<td className="px-6 py-4">{movie.director}</td>
-							<td className="px-6 py-4"></td>
-							<td className="px-6 py-4">{movie.plot}</td>
+							<td className="w-[50px] truncate px-6 py-4"></td>
+							<td className="w-[50px] truncate px-6 py-4">{movie.plot}</td>
 						</tr>
 					))}
 				</tbody>
