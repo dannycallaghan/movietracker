@@ -1,7 +1,12 @@
 import { TbArrowsSort } from 'react-icons/tb';
 import { useEffect, useState } from 'react';
 
-export default function MovieTable({ movies, handleViewed, handleSort }) {
+export default function MovieTable({
+	movies,
+	handleViewed,
+	handleSort,
+	handleDelete,
+}) {
 	const [data, setData] = useState(movies);
 
 	useEffect(() => {
@@ -46,6 +51,7 @@ export default function MovieTable({ movies, handleViewed, handleSort }) {
 						</th>
 						<th className="px-6 py-3">Actors</th>
 						<th className="px-6 py-3">Plot</th>
+						<th className="px-6 py-3"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -75,6 +81,14 @@ export default function MovieTable({ movies, handleViewed, handleSort }) {
 							<td className="px-6 py-4">{movie.director}</td>
 							<td className="w-[50px] truncate px-6 py-4">{movie.actors}</td>
 							<td className="w-[50px] truncate px-6 py-4">{movie.plot}</td>
+							<td className="px-6 py-4">
+								<button
+									className="inline-flex items-center rounded-lg border border-red-700 bg-red-700 px-3 text-sm font-medium text-white"
+									onClick={() => handleDelete(movie.id)}
+								>
+									Delete
+								</button>
+							</td>
 						</tr>
 					))}
 				</tbody>

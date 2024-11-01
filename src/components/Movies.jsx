@@ -1,6 +1,6 @@
 import MovieTable from './MovieTable.jsx';
 import MovieSearch from './MovieSearch.jsx';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function formatMoviesJSON(movies) {
 	return movies.map((movie) => {
@@ -85,6 +85,19 @@ export default function Movies({ movies }) {
 		setFilteredData(data);
 	};
 
+	const handleDelete = (id) => {
+		setData((prev) => {
+			const result = prev.filter((movie) => {
+				return movie.id !== id;
+			});
+			return [...result];
+		});
+	};
+
+	useEffect(() => {
+		setFilteredData(data);
+	}, [data]);
+
 	return (
 		<>
 			<p className="w-1/2 text-gray-500">
@@ -95,6 +108,7 @@ export default function Movies({ movies }) {
 				movies={filteredData}
 				handleViewed={handleViewed}
 				handleSort={handleSort}
+				handleDelete={handleDelete}
 			/>
 		</>
 	);
