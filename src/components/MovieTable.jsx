@@ -45,9 +45,9 @@ export default function MovieTable({ movies }) {
 							</th>
 							<td className="px-6 py-4">{movie.year}</td>
 							<td className="px-6 py-4">{movie.runtime}</td>
-							<td className="px-6 py-4"></td>
+							<td className="px-6 py-4">{movie.genres.join(', ')}</td>
 							<td className="px-6 py-4">{movie.director}</td>
-							<td className="px-6 py-4"></td>
+							<td className="px-6 py-4">{movie.actors}</td>
 							<td className="px-6 py-4">{movie.plot}</td>
 						</tr>
 					))}
