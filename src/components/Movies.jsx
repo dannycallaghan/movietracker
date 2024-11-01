@@ -44,7 +44,6 @@ export default function Movies({ movies }) {
 				} else {
 					result.sort((a, b) => Number(b.year - a.year));
 				}
-				sortAsc.current = !sortAsc.current;
 			}
 			if (sort === 'runtime') {
 				if (sortAsc.current) {
@@ -52,8 +51,22 @@ export default function Movies({ movies }) {
 				} else {
 					result.sort((a, b) => Number(b.runtime - a.runtime));
 				}
-				sortAsc.current = !sortAsc.current;
 			}
+			if (sort === 'director') {
+				if (sortAsc.current) {
+					result.sort((a, b) => Number(a.runtime) - Number(b.runtime));
+				} else {
+					result.sort((a, b) => Number(b.runtime - a.runtime));
+				}
+			}
+			if (sort === 'title') {
+				if (sortAsc.current) {
+					result.sort((a, b) => Number(a.runtime) - Number(b.runtime));
+				} else {
+					result.sort((a, b) => Number(b.runtime - a.runtime));
+				}
+			}
+			sortAsc.current = !sortAsc.current;
 			return [...result];
 		});
 	};

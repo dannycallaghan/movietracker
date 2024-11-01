@@ -15,7 +15,10 @@ export default function MovieTable({ movies, handleViewed, handleSort }) {
 					<tr>
 						<th className="w-[20px] px-6 py-3"></th>
 						<th className="px-6 py-3">
-							<button className="flex items-center gap-2">
+							<button
+								className="flex items-center gap-2"
+								onClick={() => handleSort('title')}
+							>
 								Title <TbArrowsSort className="h-4 w-4" />
 							</button>
 						</th>
@@ -36,7 +39,7 @@ export default function MovieTable({ movies, handleViewed, handleSort }) {
 							</button>
 						</th>
 						<th className="px-6 py-3">Genres</th>
-						<th className="px-6 py-3">
+						<th className="px-6 py-3" onClick={() => handleSort('director')}>
 							<button className="flex items-center gap-2">
 								Director <TbArrowsSort className="h-4 w-4" />
 							</button>
