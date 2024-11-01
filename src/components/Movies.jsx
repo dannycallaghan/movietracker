@@ -1,6 +1,6 @@
 import MovieTable from './MovieTable.jsx';
 import MovieSearch from './MovieSearch.jsx';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 function formatMoviesJSON(movies) {
 	return movies.map((movie) => {
@@ -13,9 +13,10 @@ function formatMoviesJSON(movies) {
 
 export default function Movies({ movies }) {
 	const [data, setData] = useState(movies);
+	const [filteredData, setFilteredData] = useState(movies);
 
 	const handleViewed = (e, id) => {
-		setData((prev) =>
+		setFilteredData((prev) =>
 			prev.map((movie) => {
 				if (movie.id === id) {
 					return {
@@ -29,14 +30,14 @@ export default function Movies({ movies }) {
 	};
 
 	const getViewed = () => {
-		const viewed = data.filter((movie) => movie.viewed === true);
+		const viewed = filteredData.filter((movie) => movie.viewed === true);
 		return viewed.length;
 	};
 
 	const sortAsc = useRef(true);
 
 	const handleSort = (sort) => {
-		setData((prev) => {
+		setFilteredData((prev) => {
 			const result = prev;
 			if (sort === 'year') {
 				if (sortAsc.current) {
@@ -71,18 +72,27 @@ export default function Movies({ movies }) {
 		});
 	};
 
-	useEffect(() => {
-		console.log('data changed');
-	}, [data]);
+	const handleSearch = (search) => {
+		setFilteredData((prev) => {
+			const result = prev.filter((movie) => {
+				return movie.title.toLowerCase().includes(search.toLowerCase());
+			});
+			return [...result];
+		});
+	};
+
+	const handleReset = () => {
+		setFilteredData(data);
+	};
 
 	return (
 		<>
 			<p className="w-1/2 text-gray-500">
 				Of {data.length} movies, you've see {getViewed()}.
 			</p>
-			<MovieSearch />
+			<MovieSearch handleSearch={handleSearch} handleReset={handleReset} />
 			<MovieTable
-				movies={data}
+				movies={filteredData}
 				handleViewed={handleViewed}
 				handleSort={handleSort}
 			/>
