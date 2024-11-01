@@ -1,6 +1,7 @@
 {
-  "singleQuote": true,
-  "useTabs": true,
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindAttributes": ["cn"]
+	"singleQuote": true,
+	"useTabs": true,
+	"plugins": ["prettier-plugin-tailwindcss"],
+	"spaces": 2,
+	"tailwindAttributes": ["cn"]
 }
